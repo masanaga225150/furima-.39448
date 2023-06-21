@@ -37,6 +37,7 @@
 
 - belongs_to :user
 - has_many :items_orders
+- has_one :order
    
 ## items_orders テー  ブル 
    
@@ -48,8 +49,8 @@
 | delivery_address     | string     | null: false                    |
 | delivery_buildeng    | string     | null: false                    |
 | delivery_phone       | string     | null: false                    |
-| item                 | references | null: false, foreign_key: true |
-| order                | references | null: false, foreign_key: true |
+| item                 | references | null: false, foreign_key: true |  # foreign_key: true 外部キーを設定(別テーブルのカラムを参照する)
+| order                | references | null: false, foreign_key: true |  # unique: true 一意生のみ許可(同じ値は保存できない)
    
 ### Association
 
@@ -68,6 +69,7 @@
 
 - belongs_to :user
 - has_many :items_orders
+- has_one :item
 
 ## comments テーブル
 
