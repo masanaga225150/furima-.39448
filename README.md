@@ -11,13 +11,12 @@
 | last_name            | string     | null: false                    |
 | first_name_kana      | string     | null: false                    |
 | last_name_kana       | string     | null: false                    |
-| birthday             | datetime   | null: false                    |
+| birthday             | date       | null: false                    |
 
 ### Association
 
 - has_many :items
 - has_many :orders
-- has_many :comments
    
 ## items テーブル                                                   # 画像に関するカラムを用意する必要がない。「active_storage」のgemを使用することで、テーブルなどが自動生成されるためです。 
                                   # ActiveHashとは、都道府県などの変更されないデータをモデルファイル内に直接記述することで、データベースへ保存せずにデータを取り扱うことができるGemです。
@@ -32,14 +31,13 @@
 | shipping_duration_id | integer    | null: false                    |
 | price                | integer    | null: false                    |
 | user                 | references | null: false, foreign_key: true |  # references 他テーブルから情報を参照する際に用いる型です。userと記載するとuser_idというカラムが生成されます。 
-  
+                                                                        # foreign_key: true 外部キーを設定(別テーブルのカラムを参照する)
 ### Association
 
 - belongs_to :user
-- has_many :items_orders
 - has_one :order              # 親: itemモデル
    
-## items_orders テー  ブル 
+## items_orders テーブル 
    
 | Column               | Type       | Options                        |
 | -------------------  | ---------- | -------------------------------|
@@ -49,8 +47,8 @@
 | delivery_address     | string     | null: false                    |
 | delivery_buildeng    | string     |                                |  # 建物名は入力任意項目のためNOT NULL制約はかけない
 | delivery_phone       | string     | null: false                    |
-| item                 | references | null: false, foreign_key: true |  # foreign_key: true 外部キーを設定(別テーブルのカラムを参照する)
-| order                | references | null: false, foreign_key: true |  # unique: true 一意生のみ許可(同じ値は保存できない)
+| item                 | integer    | null: false                    |  
+| order                | integer    | null: false                    |  # unique: true 一意生のみ許可(同じ値は保存できない)
    
 ### Association
 
@@ -61,6 +59,7 @@
 | Column               | Type       | Options                        |
 | -------------------  | ---------- | -------------------------------|
 | user                 | references | null: false, foreign_key: true |
+| item                 | references | null: false, foreign_key: true |
 
 ### Association
 
