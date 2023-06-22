@@ -4,7 +4,7 @@
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| nick_name            | string     | null: false                    |   # null: false: カラムが空の状態では保存できない
+| nickname            | string     | null: false                    |   # null: false: カラムが空の状態では保存できない
 | email                | string     | null: false, unique: true      |   # unique: true 一意性のみ許可(同じ値は保存できない)
 | encrypted_password   | string     | null: false                    |   # encrypted_password ユーザー登録時などに入力するパスワードの意味
 | first_name           | string     | null: false                    |   # encryptedは「暗号化された」という意味

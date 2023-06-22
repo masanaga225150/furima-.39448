@@ -7,7 +7,7 @@
                 <mxCell id="sXNe5g6KQHCO2Mbk4pXV-1" value="users " style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="320" y="120" width="160" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="sXNe5g6KQHCO2Mbk4pXV-2" value="nick_name&#10;email&#10;encrypted_password&#10;first_name&#10;last_name&#10;first_name_kana&#10;last_name_kana&#10;birthday" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontStyle=0" vertex="1" parent="sXNe5g6KQHCO2Mbk4pXV-1">
+                <mxCell id="sXNe5g6KQHCO2Mbk4pXV-2" value="nickname&#10;email&#10;encrypted_password&#10;first_name&#10;last_name&#10;first_name_kana&#10;last_name_kana&#10;birthday" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontStyle=0" vertex="1" parent="sXNe5g6KQHCO2Mbk4pXV-1">
                     <mxGeometry y="30" width="160" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="sXNe5g6KQHCO2Mbk4pXV-3" value="items" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
