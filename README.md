@@ -22,7 +22,7 @@
                                     # ActiveHashとは、都道府県などの変更されないデータをモデルファイル内に直接記述することで、データベースへ保存せずにデータを取り扱うことができるGemです。
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | -------------------------------|
-| seller_name            | string     | null: false                    |
+| product_name            | string     | null: false                    |
 | description            | text       | null: false                    |
 | category_id            | integer    | null: false                    | # Active Hashを利用する場合は、各種情報に対応するモデルを作成する。categoryモデル
 | condition_id           | integer    | null: false                    | # conditionモデル
