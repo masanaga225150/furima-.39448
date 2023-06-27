@@ -7,5 +7,4 @@ class ShippingFee < ActiveHash::Base # クラス名はアンダーバーなし�
 
   include ActiveHash::Associations
   has_many :items
-  
 end
