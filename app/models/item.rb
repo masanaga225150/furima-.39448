@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   # ActiveHashを用いて、belongs_toを設定するには、上記を記述してmoduleを取り込む。
+  # ActiveRecordメソッドとは、モデルがテーブル操作に関して使用できるメソッドです。
 
   belongs_to :user
   # has_one :order

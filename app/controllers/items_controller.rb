@@ -4,9 +4,10 @@ class ItemsController < ApplicationController
   # ユーザーがログインしていなければ、そのユーザーをログイン画面に遷移させる。
   # before_actionで呼び出すことで、アクションを実行する前にログインしていなければログイン画面に遷移させられる。
 
- # def index
-  # @items = Item.all
- # end
+ def index
+  @items = Item.all # 複数データになるので、@itemsにする
+                    # 商品の一覧を取得する
+ end
 
  def new
   @item = Item.new
