@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :product_name, :description, :category_id, :condition_id, :shipping_fee_id, :delivery_prefecture_id, :shipping_duration_id, :price, :user).merge(user_id: current_user.id) # item_paramsというストロングパラメーターを定義し、createメソッドの引数に使用して、itemsテーブルへ保存できるようにした。
+    params.require(:item).permit(:image).merge(user_id: current_user.id) # item_paramsというストロングパラメーターを定義し、createメソッドの引数に使用して、itemsテーブルへ保存できるようにした。
     # 画像の保存を許可するストロングパラメーター
   end
 end

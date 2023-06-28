@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   # ActiveHashを用いて、belongs_toを設定するには、上記を記述してmoduleを取り込む。
 
   belongs_to :user
-  has_one :order
+  # has_one :order
   has_one_attached :image # レコードとファイルの間に1対1のマッピングを設定する。商品一点につき一個の画像を添付する
   # この記述により、モデル.ファイル名(item.image)で、添付されたファイルにアクセスできるようになる。
   # ファイル名がimage。このファイル名は、そのモデルが紐づいたフォームから送られるパラメーターのキーにもなります。
