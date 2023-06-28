@@ -2,24 +2,24 @@ require 'rails_helper' # Rspecを用いてRailsの機能をテストするとき
 
 RSpec.describe User, type: :model do
   before do
-   @user = FactoryBot.build(:user) # FactoryBotを用いれば、毎回newメソッドで値を指定してインスタンスを生成する必要がなくなる
+    @user = FactoryBot.build(:user) # FactoryBotを用いれば、毎回newメソッドで値を指定してインスタンスを生成する必要がなくなる
   end
 
   describe 'ユーザー新規登録' do # describeとは、テストコードのグループ分けを行うメソッドです。
     context '新規登録できるとき' do # contextは、特定の条件を指定して魏ループを分けます。
-     it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
-       expect(@user).to be_valid # itメソッドは、より詳細にグループ分けを行うメソッドです。
-       # binding.pry
-      end                       # itメソッドで分けたグループを、exampleとも呼びます。
+      it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
+        expect(@user).to be_valid # itメソッドは、より詳細にグループ分けを行うメソッドです。
+        # binding.pry
+      end # itメソッドで分けたグループを、exampleとも呼びます。
     end
-          
+
     context '新規登録できないとき' do
       it 'nicknameが空では登録できない' do  # nicknameが空では登録できないテストコードを記述します
         @user.nickname = ''       # userのnameが空だったらDBに保存されない が正常に起動するかを確認しています。
         @user.valid?              # もしDBに保存されない場合のエラーメッセージは、「Nickname can't be blank」となります。
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
-              # full_messagesは、エラーの内容から、エラーメッセージを配列として取り出すメソッドです。
-              # expectationとは、検証で得られた挙動が想定通りなのかを確認する構文
+        # full_messagesは、エラーの内容から、エラーメッセージを配列として取り出すメソッドです。
+        # expectationとは、検証で得られた挙動が想定通りなのかを確認する構文
       end
       it 'emailが空では登録できない' do
         @user.email = ''
@@ -33,20 +33,20 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailは@を含まないと登録できない' do
-       @user.email = 'testmail'
-       @user.valid?
-       expect(@user.errors.full_messages).to include('Email is invalid')
+        @user.email = 'testmail'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが空では登録できない' do
-       @user.password = ''
-       @user.valid?
-       expect(@user.errors.full_messages).to include("Password can't be blank")
+        @user.password = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it 'passwordが6文字以上出ない場合は登録できない' do
-       @user.password = '00000'
-       @user.password_confirmation = '00000'
-       @user.valid?
-       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+        @user.password = '00000'
+        @user.password_confirmation = '00000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
       it '英字のみのパスワードは登録できない' do
         @user.password = 'password'
@@ -117,7 +117,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
-    end 
+    end
   end
 end
 
