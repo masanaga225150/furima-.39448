@@ -22,7 +22,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image", required: true %>
+        <%= f.file_field :image, id:"item-image" %> <%# required: trueを追記すると「ファイルを選択してください」とエラー文が表示される%>
       </div>
     </div>
     <%# /商品画像 %>
