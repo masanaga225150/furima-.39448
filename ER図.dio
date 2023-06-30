@@ -15,7 +15,7 @@
                         <mxRectangle x="140" y="320" width="70" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="sXNe5g6KQHCO2Mbk4pXV-4" value="seller_name&#10;description&#10;category_id&#10;condition_id&#10;shipping_fee_id&#10;delivery_prefecture_id&#10;shipping_duration_id&#10;price&#10;user" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontStyle=1" vertex="1" parent="sXNe5g6KQHCO2Mbk4pXV-3">
+                <mxCell id="sXNe5g6KQHCO2Mbk4pXV-4" value="product_name&#10;description&#10;category_id&#10;condition_id&#10;shipping_fee_id&#10;delivery_prefecture_id&#10;shipping_duration_id&#10;price&#10;user" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontStyle=1" vertex="1" parent="sXNe5g6KQHCO2Mbk4pXV-3">
                     <mxGeometry y="30" width="160" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="sXNe5g6KQHCO2Mbk4pXV-6" value="orders" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
