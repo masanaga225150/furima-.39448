@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # before_actionで呼び出すことで、アクションを実行する前にログインしていなければログイン画面に遷移させられる。
 
   def index
-    @items = Item.all # 複数データになるので、@itemsにする
+    @items = Item.all.order(created_at: :desc) # 複数データになるので、@itemsにする
     # 商品の一覧を取得する
   end
 
