@@ -26,10 +26,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  # def edit
-  # @item = Item.find(params[:id])
-  # @items = Item.all
-  # end
+  def edit
+  @item = Item.find(params[:id])
+  @items = Item.all
+  end
 
   private
 
