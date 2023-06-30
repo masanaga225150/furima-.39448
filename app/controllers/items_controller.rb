@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = Item.new # newメソッド Itemクラスの新しいインスタンスを作成
   end
 
   def create # createアクションを定義

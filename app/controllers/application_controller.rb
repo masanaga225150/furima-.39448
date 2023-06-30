@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth
+  # before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
   # Deviseが提供するデフォルトのユーザー情報以外を、ストロングパラメーターで許可することができる。
   # configure設定する permitted許可される
