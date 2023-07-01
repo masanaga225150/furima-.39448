@@ -38,13 +38,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  private
+
   def redirect_to_root_if_not_owner
     item = Item.find(params[:id])
     return unless current_user != item.user
     redirect_to root_path
   end
 
-  private
 
   def item_params
     params.require(:item).permit(:image, :product_name, :description, :category_id, :condition_id, :shipping_fee_id, :delivery_prefecture_id, :shipping_duration_id, :price).merge(user_id: current_user.id) # item_paramsというストロングパラメーターを定義し、createメソッドの引数に使用して、itemsテーブルへ保存できるようにした。
