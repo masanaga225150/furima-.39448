@@ -36,8 +36,12 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    if current_user == item.user
+     item.destroy
+     redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
@@ -45,7 +49,6 @@ class ItemsController < ApplicationController
   def redirect_to_root_if_not_owner
     item = Item.find(params[:id])
     return unless current_user != item.user
-
     redirect_to root_path
   end
 
