@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :redirect_to_root_if_not_owner, only: [:edit, :update]
+  before_action :set_item, only: [:show, :edit, :update]
   # arthenticate_user!は、Deviseが提供するメソッドで、ログイン状態のチェックを行います。
   # ユーザーがログインしていなければ、そのユーザーをログイン画面に遷移させる。
   # before_actionで呼び出すことで、アクションを実行する前にログインしていなければログイン画面に遷移させられる。
@@ -24,17 +25,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
     @items = Item.all
   end
 
   def update
-    @item = Item.find(params[:id])
-
     if @item.update(item_params)
       redirect_to @item
     else
@@ -45,7 +42,6 @@ class ItemsController < ApplicationController
   def redirect_to_root_if_not_owner
     item = Item.find(params[:id])
     return unless current_user != item.user
-
     redirect_to root_path
   end
 
@@ -55,4 +51,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :product_name, :description, :category_id, :condition_id, :shipping_fee_id, :delivery_prefecture_id, :shipping_duration_id, :price).merge(user_id: current_user.id) # item_paramsというストロングパラメーターを定義し、createメソッドの引数に使用して、itemsテーブルへ保存できるようにした。
     # 画像の保存を許可するストロングパラメーター
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
