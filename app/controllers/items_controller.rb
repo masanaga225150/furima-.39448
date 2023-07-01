@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @items = Item.all
   end
 
   def update
