@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
   describe '商品出品登録' do
     context '出品登録できるとき' do
       it 'imageとproduct_nameとdescriptionとcategoryとconditionとshipping_feeとdelivery_prefectureとshipping_durationとpriceが存在すれば登録できる' do
-        expect(@item).to be_valid # 生成した@itemが正常にDBへ保存されることを、be_validで確認しています。
+        expect(@item).to be_valid
       end
     end
   end
@@ -29,21 +29,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Product name can't be blank")
     end
-    # it 'product_nameが40文字を超えると登録できない' do
-    #   @item.product_name = 'a' * 41
-    #   @item.valid?
-    #   expect(@item.errors.full_messages).to include("Product name is too long (maximum is 40 characters)")
-    # end
     it 'descriptionが空では登録できない' do
       @item.description = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Description can't be blank")
     end
-    # it 'descriptionが1000文字を超えると登録できない' do
-    #   @item.description = 'a' * 1001
-    #   @item.valid?
-    #   expect(@item.errors.full_messages).to include("Description is too long (maximum is 1000 characters)")
-    # end
     it 'categoryが空では登録できない' do
       @item.category = nil
       @item.valid?
@@ -91,6 +81,3 @@ RSpec.describe Item, type: :model do
     end
   end
 end
-
-# % bundle exec rspec spec/models/item_spec.rb
-# binding.pry

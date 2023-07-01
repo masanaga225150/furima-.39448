@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :redirect_to_root_if_not_owner, only: [:edit, :update]
   before_action :set_item, only: [:show, :edit, :update]
 
@@ -34,12 +34,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    if current_user == item.user
+     item.destroy
+     redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def redirect_to_root_if_not_owner
     item = Item.find(params[:id])
     return unless current_user != item.user
-
     redirect_to root_path
   end
 
