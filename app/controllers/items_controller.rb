@@ -33,20 +33,20 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id]) 
+    @item = Item.find(params[:id])
 
-   if @item.update(item_params)
-     redirect_to @item
-   else
-    render :edit
-   end
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit
+    end
   end
 
   def redirect_to_root_if_not_owner
     item = Item.find(params[:id])
-    if current_user != item.user
-      redirect_to root_path
-    end
+    return unless current_user != item.user
+
+    redirect_to root_path
   end
 
   private
