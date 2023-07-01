@@ -1,15 +1,12 @@
-<div class="items-sell-contents"> <%# 商品を出品するページ%>
+<div class="items-sell-contents">
   <header class="items-sell-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
 
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, local: true do |f| %> <%# <%=  %><%#で囲んで表示させる %>
-       <%# form_with urlオプション, methodオプション, localオプション %> <%# methodオプションは、フォームの情報を送るリクエストのGTTPメソッドを指定。postメソッドを指定する場合は省略可能%>
-       <%# modelオプションを指定するとインスタンス変数に保存されている内容によって、form_withはリクエストを送るアクションを自動的に判断するようになる。%>
-       <%# newアクションで定義した@itemがmoelオプションにして入れている。modelオプションに指定されたいくスタンス変数の状態が生成したばかりのインスタンスである場合、リクエストはcreateアクションに送信される。%>
-
+    <%= form_with model: @item, local: true do |f| %> 
+  
     <%= render 'shared/error_messages', model: f.object %>
 
     <%# 商品画像 %>
@@ -22,7 +19,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %> <%# required: trueを追記すると「ファイルを選択してください」とエラー文が表示される%>
+        <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
     <%# /商品画像 %>
@@ -52,8 +49,6 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-          <%# collection_selectとは、データをプルダウン形式で表示することができるメソッドです。%>
-          <%# form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名, オプション, htmlオプション %>
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>

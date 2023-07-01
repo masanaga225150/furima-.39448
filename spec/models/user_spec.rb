@@ -1,25 +1,22 @@
-require 'rails_helper' # Rspecを用いてRailsの機能をテストするときに、共通の設定を書いておくファイルです。
+require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before do
-    @user = FactoryBot.build(:user) # FactoryBotを用いれば、毎回newメソッドで値を指定してインスタンスを生成する必要がなくなる
+    @user = FactoryBot.build(:user)
   end
 
-  describe 'ユーザー新規登録' do # describeとは、テストコードのグループ分けを行うメソッドです。
-    context '新規登録できるとき' do # contextは、特定の条件を指定して魏ループを分けます。
+  describe 'ユーザー新規登録' do
+    context '新規登録できるとき' do
       it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
-        expect(@user).to be_valid # itメソッドは、より詳細にグループ分けを行うメソッドです。
-        # binding.pry
-      end # itメソッドで分けたグループを、exampleとも呼びます。
+        expect(@user).to be_valid
+      end
     end
 
     context '新規登録できないとき' do
-      it 'nicknameが空では登録できない' do  # nicknameが空では登録できないテストコードを記述します
-        @user.nickname = ''       # userのnameが空だったらDBに保存されない が正常に起動するかを確認しています。
-        @user.valid?              # もしDBに保存されない場合のエラーメッセージは、「Nickname can't be blank」となります。
+      it 'nicknameが空では登録できない' do
+        @user.nickname = ''
+        @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
-        # full_messagesは、エラーの内容から、エラーメッセージを配列として取り出すメソッドです。
-        # expectationとは、検証で得られた挙動が想定通りなのかを確認する構文
       end
       it 'emailが空では登録できない' do
         @user.email = ''
@@ -120,8 +117,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
-# テストコードを実行
-# % bundle exec rspec spec/models/user_spec.rb
-# binding.pry
-# @user.errors.full_messages

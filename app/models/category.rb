@@ -13,6 +13,6 @@ class Category < ActiveHash::Base
     { id: 11, name: 'その他' }
   ]
 
-  include ActiveHash::Associations # ActiveHashを用いて、has_manyを設定するには、左記と記述しmoduleを取り込む。
-  has_many :items                  # アソシエーションの記述
+  include ActiveHash::Associations
+  has_many :items
 end
