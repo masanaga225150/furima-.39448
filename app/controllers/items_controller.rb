@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :redirect_to_root_if_not_owner, only: [:edit, :update]
   # arthenticate_user!は、Deviseが提供するメソッドで、ログイン状態のチェックを行います。
   # ユーザーがログインしていなければ、そのユーザーをログイン画面に遷移させる。
   # before_actionで呼び出すことで、アクションを実行する前にログインしていなければログイン画面に遷移させられる。
@@ -36,7 +37,16 @@ class ItemsController < ApplicationController
 
    if @item.update(item_params)
      redirect_to @item
+   else
+    render :edit
    end
+  end
+
+  def redirect_to_root_if_not_owner
+    item = Item.find(params[:id])
+    if current_user != item.user
+      redirect_to root_path
+    end
   end
 
   private
