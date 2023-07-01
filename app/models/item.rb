@@ -25,7 +25,9 @@ class Item < ApplicationRecord
   #   validates :dlivery_prefecture_id
   #   validates :shipping_duration_id
   # end
-
+  validates :image, presence: true
+  validates :product_name, presence: true
+  validates :description, presence: true
   validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :shipping_fee_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
@@ -36,7 +38,4 @@ class Item < ApplicationRecord
   # 数値であればデータベースに保存を許可して、それ以外では保存が許可されないようにできる。
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-  validates :image, presence: true
-  validates :product_name, presence: true
-  validates :description, presence: true
 end
