@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_02_061603) do
+ActiveRecord::Schema.define(version: 2023_07_03_111923) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,23 @@ ActiveRecord::Schema.define(version: 2023_07_02_061603) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "form_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "item_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "delivery_zipcode", null: false
+    t.integer "delivery_prefecture_id", null: false
+    t.string "delivery_city", null: false
+    t.string "delivery_address", null: false
+    t.string "delivery_building", null: false
+    t.string "delivery_phone", null: false
+    t.integer "order", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "product_name", null: false
     t.text "description", null: false
@@ -61,18 +78,6 @@ ActiveRecord::Schema.define(version: 2023_07_02_061603) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "items_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "delivery_zipcode", null: false
-    t.integer "delivery_prefecture_id", null: false
-    t.string "delivery_city", null: false
-    t.string "delivery_address", null: false
-    t.string "delivery_building", null: false
-    t.string "delivery_phone", null: false
-    t.integer "order", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

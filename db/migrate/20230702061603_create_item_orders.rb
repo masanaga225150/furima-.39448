@@ -1,4 +1,4 @@
-class CreateItemsOrders < ActiveRecord::Migration[6.0]
+class CreateItemOrders < ActiveRecord::Migration[6.0]
   def change
     create_table :items_orders do |t|
       t.string       :delivery_zipcode,           null: false
