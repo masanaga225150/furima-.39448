@@ -47,7 +47,7 @@
 | delivery_address       | string     | null: false                    |
 | delivery_building      | string     |                                |
 | delivery_phone         | string     | null: false                    |
-| order                  | integer    | null: false                    |
+| order                  | references | null: false, foreign_key: true |
      
 ### Association  
   
