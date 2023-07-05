@@ -40,8 +40,8 @@ class ItemsController < ApplicationController
      item.destroy
     end
      redirect_to root_path
-   end
-
+  end
+   
   private
 
   def redirect_to_root_if_not_owner
