@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe FormOrder, type: :model do
   before do
-    @form_order = FactoryBot.build(:form_order)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @form_order = FactoryBot.build(:form_order, user_id: user.id, item_id: item.id)
   end
 
   describe '配送先情報の保存' do
@@ -18,7 +20,7 @@ RSpec.describe FormOrder, type: :model do
         @form_order.item_id = 1
         expect(@form_order).to be_valid
       end
-      it '郵便番号が「3桁＋ハイフン＋4桁」の組み合わせであれば保存できる' do
+      it '郵便番号が「3桁+ハイフン+4桁」の組み合わせであれば保存できる' do
         @form_order.delivery_zipcode = '123-4560'
         expect(@form_order).to be_valid
       end
@@ -92,6 +94,11 @@ RSpec.describe FormOrder, type: :model do
       end
       it '電話番号にハイフンがあると保存できないこと' do
         @form_order.delivery_phone = '123 - 1234 - 1234'
+        @form_order.valid?
+        expect(@form_order.errors.full_messages).to include()
+      end
+      it '電話番号が9桁以下では保存できないこと' do
+        @form_order.delivery_phone = 12_345_67
         @form_order.valid?
         expect(@form_order.errors.full_messages).to include()
       end

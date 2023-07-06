@@ -5,7 +5,7 @@ class CreateItemOrders < ActiveRecord::Migration[6.0]
       t.integer      :delivery_prefecture_id,     null: false
       t.string       :delivery_city,              null: false
       t.string       :delivery_address,           null: false
-      t.string       :delivery_building,          null: false
+      t.string       :delivery_building
       t.string       :delivery_phone,             null: false
       t.references   :order,                      null: false, foreign_key: true
       t.timestamps
