@@ -24,6 +24,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    if @item.order.present?
+     redirect_to root_path
+    end
   end
 
   def update
@@ -38,12 +42,10 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     if current_user == item.user
      item.destroy
-     redirect_to root_path
-    else
-      redirect_to root_path
     end
+     redirect_to root_path
   end
-
+   
   private
 
   def redirect_to_root_if_not_owner
