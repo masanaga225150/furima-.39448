@@ -50,27 +50,28 @@ RSpec.describe FormOrder, type: :model do
       it 'user_idが空だと保存できない' do
         @form_order.user_id = nil
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include()
+        expect(@form_order.errors.full_messages).to include
       end
       it 'item_idが空だと保存できない' do
         @form_order.item_id = nil
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include()
+        expect(@form_order.errors.full_messages).to include
       end
       it '郵便番号が空だと保存できないこと' do
         @form_order.delivery_zipcode = nil
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include("Delivery zipcode can't be blank", "Delivery zipcode Postal code is invalid.Enter it as follows (e.g. 123-4567)")
+        expect(@form_order.errors.full_messages).to include("Delivery zipcode can't be blank",
+                                                            'Delivery zipcode Postal code is invalid.Enter it as follows (e.g. 123-4567)')
       end
       it '郵便番号にハイフンがないと保存できないこと' do
         @form_order.delivery_zipcode = 1_234_567
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include("Delivery zipcode Postal code is invalid.Enter it as follows (e.g. 123-4567)")
+        expect(@form_order.errors.full_messages).to include('Delivery zipcode Postal code is invalid.Enter it as follows (e.g. 123-4567)')
       end
       it '都道府県が「---」だと保存できないこと' do
         @form_order.delivery_prefecture_id = 0
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include()
+        expect(@form_order.errors.full_messages).to include
       end
       it '都道府県が空だと保存できないこと' do
         @form_order.delivery_prefecture_id = nil
@@ -95,17 +96,17 @@ RSpec.describe FormOrder, type: :model do
       it '電話番号にハイフンがあると保存できないこと' do
         @form_order.delivery_phone = '123 - 1234 - 1234'
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include()
+        expect(@form_order.errors.full_messages).to include
       end
       it '電話番号が9桁以下では保存できないこと' do
         @form_order.delivery_phone = 12_345_67
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include()
+        expect(@form_order.errors.full_messages).to include
       end
       it '電話番号が12桁以上あると保存できないこと' do
         @form_order.delivery_phone = 12_345_678_910_123_111
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include()
+        expect(@form_order.errors.full_messages).to include
       end
       it 'トークンが空だと保存できないこと' do
         @form_order.token = nil
