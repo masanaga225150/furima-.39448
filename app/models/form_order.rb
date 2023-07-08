@@ -7,14 +7,14 @@ class FormOrder
   with_options presence: true do
     validates :user_id
     validates :item_id
+    validates :token
     validates :delivery_zipcode,
-              format: { with: /\A\d{3}-\d{4}\z/, message: 'Postal code is invalid.Enter it as follows (e.g. 123-4567)' }
-    validates :delivery_prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+              format: { with: /\A\d{3}-\d{4}\z/, message: 'が無効です。次のように入力してください（例：123-4567）' }
+    validates :delivery_prefecture_id, numericality: { other_than: 1, message: "を入力してください" }
     validates :delivery_city
     validates :delivery_address
-    validates :delivery_phone, length: { in: 10..11, too_short: 'Phone number is too short' },
-                               format: { with: /\A\d+\z/, message: 'Phone number is invalid. Input only number' }
-    validates :token
+    validates :delivery_phone, length: { in: 10..11, too_short: 'が短すぎます' },
+                               format: { with: /\A\d+\z/, message: 'が無効です。数字のみを入力してください' }
   end
 
   def save

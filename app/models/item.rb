@@ -14,11 +14,11 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :product_name, presence: true
   validates :description, presence: true
-  validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :condition_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_fee_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :delivery_prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_duration_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, presence: true, numericality: { other_than: 1, message: "を入力してください" }
+  validates :condition_id, presence: true, numericality: { other_than: 1, message: "を入力してください" }
+  validates :shipping_fee_id, presence: true, numericality: { other_than: 1, message: "を入力してください" }
+  validates :delivery_prefecture_id, presence: true, numericality: { other_than: 1, message: "を入力してください" }
+  validates :shipping_duration_id, presence: true, numericality: { other_than: 1, message: "を入力してください" }
 
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
