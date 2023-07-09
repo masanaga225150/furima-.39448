@@ -60,13 +60,12 @@ RSpec.describe FormOrder, type: :model do
       it '郵便番号が空だと保存できないこと' do
         @form_order.delivery_zipcode = nil
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include("Delivery zipcode can't be blank",
-                                                            'Delivery zipcode Postal code is invalid.Enter it as follows (e.g. 123-4567)')
+        expect(@form_order.errors.full_messages).to include("Delivery zipcode can't be blank", "Delivery zipcode が無効です。次のように入力してください（例：123-4567）")
       end
       it '郵便番号にハイフンがないと保存できないこと' do
         @form_order.delivery_zipcode = 1_234_567
         @form_order.valid?
-        expect(@form_order.errors.full_messages).to include('Delivery zipcode Postal code is invalid.Enter it as follows (e.g. 123-4567)')
+        expect(@form_order.errors.full_messages).to include("Delivery zipcode が無効です。次のように入力してください（例：123-4567）")
       end
       it '都道府県が「---」だと保存できないこと' do
         @form_order.delivery_prefecture_id = 0
